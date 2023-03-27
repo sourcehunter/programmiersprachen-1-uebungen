@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Programmiersprachen I Übungen</h2>
+					<h3>SS 2023</h3>
+					<p>HfG Gmünd</p>
+					<p>
+						<a href="mailto:christian.dittrich@creatale.de">Christian Dittrich</a>
+					</p>
+				</section>
+				<section>
+					<h1>Solutions</h1>
+				</section>
+				<section>
+					<h2>Exercise 1: Understanding Code</h2>
+					<p>The three circles will form a symbol resembling a Mickey Mouse head.</p>
+				</section>
+				<section>
+					<h2>Exercise 1x: Understanding Code</h2>
+					<p>The code will produce a rainbow gradient going from the top left corner to the bottom right corner.</p>
+				</section>
+				<section>
+					<h2>Exercise 2: Using Math</h2>
+					<pre>
+						<code data-trim class="language-processing">
+							function setup() {
+								createCanvas(600, 200);
+							}
+
+							function draw() {
+								background(220);
+
+								translate(width / 2, height / 2); // move to center of canvas
+								translate(-20, -20); // adjust for offset of top left corner of figure
+								translate(-35, -35); // move by half width and height of figure, so positioning is relative to center of figure
+
+								rect(50, 20, 10, 10);
+								rect(20, 30, 70, 60);
+								rect(40, 70, 30, 10);
+								circle(40, 50, 20);
+								circle(70, 50, 20);
+							}
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>Exercise 2x: Using Math</h2>
+					<pre>
+						<code data-trim class="language-processing">
+							function setup() {
+								createCanvas(600, 200);
+							}
+
+							function draw() {
+								background(220);
+								
+								let horizontalAnchor = 0.1;
+								let verticalAnchor = 0.9;
+
+								translate(width * horizontalAnchor, height * verticalAnchor); // move to relative position on canvas specified by horizontalAnchor and verticalAnchor
+								translate(-20, -20); // adjust for offset of top left corner of figure
+								translate(-35, -35); // move by half width and height of figure, so positioning is relative to center of figure
+
+								rect(50, 20, 10, 10);
+								rect(20, 30, 70, 60);
+								rect(40, 70, 30, 10);
+								circle(40, 50, 20);
+								circle(70, 50, 20);
+							}
+						</code>
+					</pre>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>

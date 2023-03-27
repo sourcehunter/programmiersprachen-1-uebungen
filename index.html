@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Programmiersprachen I Übungen</h2>
+					<h3>SS 2023</h3>
+					<p>HfG Gmünd</p>
+					<p>
+						<a href="mailto:christian.dittrich@creatale.de">Christian Dittrich</a>
+					</p>
+				</section>
+				<section>
+					<table>
+						<tr>
+							<td>
+								<img src="images/6_Dittrich_DSC_9856.jpg">
+							</td>
+							<td style="vertical-align:top">
+								<p>CEO creatale GmbH (since 2012)</p>
+								<p>Software Developer</p>
+								<p>
+									<a href="mailto:christian.dittrich@creatale.de">christian.dittrich@creatale.de</a>
+								</p>
+								<p>
+									<a href="https://creatale.de/forge">https://creatale.de/forge</a>
+								</p>
+								<p>
+									<a href="https://twitch.tv/creatale">https://twitch.tv/creatale</a>
+								</p>
+								<p>
+									<a href="https://discord.gg/catsCpsUpN">https://discord.gg/catsCpsUpN</a>
+								</p>
+							</td>
+						</tr>
+					</table>
+				</section>
+				<section>
+					<h2>Introduction</h2>
+					<ul>
+						<li class="fragment">Diploma Computer Science 2012</li>
+						<li class="fragment">Programming since 25 years</li>
+						<li class="fragment">Know and worked with 15 different programming languages</li>
+						<!-- Ada, Assembler, C, C++, C#, CoffeeScript, Go, Java, JavaScript, Lua, Object Pascal (Delphi), Pascal, PHP, Python, TypeScript -->
+						<li class="fragment">Projects across many different domains</li>
+						<li class="fragment">Building Websites since 20 years</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Organization</h2>
+					<ul>
+						<li class="fragment">Attendance mandatory</li>
+						<div class="fragment">
+							<li>Participation = 50% of grade</li>
+							<li>Final Project = 50% of grade</li>
+						</div>
+						<li class="fragment">Deepen understanding of topics from lectures (Programmiersprachen and Webtechnologien)</li>
+						<li class="fragment">Cover any remaining question reagarding topics from lectures</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Session Schedule</h2>
+					<ul>
+						<li>Recap of topics from lectures</li>
+						<li>Q&A regarding topics from lectures</li>
+						<li>Exercises</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Now you</h2>
+				</section>
+				<section>
+					<h2>Recap p5.js</h2>
+				</section>
+				<section>
+					<h2>Exercise 1: Understanding Code</h2>
+					<p>Without running the code: What is the result?</p>
+					<pre>
+						<code data-trim class="language-processing">
+							fill(0);
+							circle(200, 200, 200);
+							circle(120, 120, 100);
+							circle(280, 120, 100);
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>Exercise 1x: Understanding Code</h2>
+					<p>Without running the code: What is the result?</p>
+					<pre>
+						<code data-trim class="language-processing">
+							colorMode(HSB);
+							for (let i = 0; i < 400; i++) {
+								stroke(i * 180 / 400, 100, 100);
+								line(i, 0, 0, i);
+							}
+							for (let i = 0; i < 400; i++) {
+								stroke(i * 180 / 400 + 180, 100, 100);
+								line(400, i, i, 400);
+							}
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>Exercise 2: Using Math</h2>
+					<p>Adapt the Robot exercise from the lecture to always draw the robot in the center of the canvas, regardless of how big the canvas is.</p>
+					<pre>
+						<code data-trim class="language-processing">
+							rect(50, 20, 10, 10);
+							rect(20, 30, 70, 60);
+							rect(40, 70, 30, 10);
+							circle(40, 50, 20);
+							circle(70, 50, 20);
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>Exercise 2x: Using Math</h2>
+					<p>Adapt the Robot exercise from the lecture to always draw the robot at a vertical and horizontal percentile of my choosing of the canvas, regardless of how big the canvas is.</p>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
