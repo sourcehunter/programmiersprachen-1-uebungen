@@ -132,6 +132,106 @@
 					<h2>Exercise 2x: Using Math</h2>
 					<p>Adapt the Robot exercise from the lecture to always draw the robot at a vertical and horizontal percentile of my choosing of the canvas, regardless of how big the canvas is.</p>
 				</section>
+				<section>
+					<h2>Recap Compilers / Interpreters</h2>
+				</section>
+				<section>
+					<h2>Recap Variables</h2>
+				</section>
+				<section>
+					<h2>Q&A</h2>
+				</section>
+				<section>
+					<h3>Exercise 3: Understanding Code</h3>
+					<p>Without running the code: What is the result?</p>
+					<pre style="font-size: 0.5em;">
+						<code data-trim class="language-processing">
+							function spike() {
+								line(-10, 0, 0, 30);
+								line(0, 30, 10, 0);
+							}
+
+							spike();
+							rotate(radians(60));
+							spike();
+							rotate(radians(60));
+							spike();
+							rotate(radians(60));
+							spike();
+							rotate(radians(60));
+							spike();
+							rotate(radians(60));
+							spike();
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h3>Exercise 3x: Understanding Code</h3>
+					<p>Without running the code: What is the result?</p>
+					<pre>
+						<code data-trim class="language-processing">
+							function drawFigure(n, r) {
+								const d = 360 / n;
+								for (let i = 0; i < 360; i += d) {
+									line(
+										sin(radians(i)) * r, cos(radians(i)) * r,
+										sin(radians(i + d)) * r, cos(radians(i + d)) * r
+									);
+								}
+							}
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>Exercise 4: Working with Variables</h2>
+					<p>Only using the variables a, b, c, how can we assign the desired values to variables d, e, f? Try to find different ways. What is the smallest number of operations?</p>
+					<pre>
+						<code data-trim class="language-javascript">
+							let a = 2;
+							let b = 5;
+							let c = 9;
+							
+							let d = ?; /* 10 */
+							let e = ?; /* 37 */
+							let f = ?; /* 0.5 */
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>Exercise 4x: Working with Variables</h2>
+					<p>Assume the user hast given you their data in variables like below. How do you create their address from those values and store it in a variable? Discuss, if the choice for data types is reasonable.</p>
+					<pre>
+						<code data-trim class="language-javascript">
+							let firstName = 'Christian';
+							let lastName = 'Dittrich';
+							let zipCode = 12345;
+							let city = 'Berlin';
+							let street = 'Langer Weg';
+							let houseNumber = 42;
+							let age = 250;
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>Exercise 5: Modelling Data</h2>
+					<p>How would you declare variables to store the following data?</p>
+					<ol>
+						<li>Country</li>
+						<li>State of a Switch</li>
+						<li>Price</li>
+						<li>Date</li>
+						<li>Position</li>
+					</ol>
+				</section>
+				<section>
+					<h2>Exercise 5x: Modelling Data</h2>
+					<p>How would you declare variables to store the following data?</p>
+					<ol>
+						<li>Enrolled student</li>
+						<li>Object in a 3D-Scene</li>
+						<li>3D-Scene</li>
+					</ol>
+				</section>
 			</div>
 		</div>
 
