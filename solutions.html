@@ -95,8 +95,8 @@
 					<p>The function will draw a regular polygon with n edges fitting in a circle with radius r.</p>
 				</section>
 				<section>
-					<h2>Exercise 4: Working with Variables</h2>
-					<p>There are an infinite number of combinations, below are a few examples. The smallest number of operations to define all three variables is 5. 1 for d and f and 3 for e.</p>
+					<h3>Exercise 4: Working with Variables</h3>
+					<p style="font-size: 0.8em">There are an infinite number of combinations, below are a few examples. The smallest number of operations to define all three variables is 5. 1 for d and f and 3 for e.</p>
 					<pre>
 						<code data-trim class="language-processing">
 							let d = a * b;
@@ -151,6 +151,413 @@
 						<li>Object in a 3D-Scene: an Object consisting of a Position and a 3D-Mesh</li>
 						<li>3D-Scene: A list of (3D-)Objects</li>
 					</ol>
+				</section>
+				<section>
+					<h2>Exercise 6: Understanding Code</h2>
+					<p>No sample solution provided.</p>
+				</section>
+				<section>
+					<h2>Exercise 7: HTML + CSS</h2>
+					<pre>
+						<code data-trim class="language-html">
+							&lt;html&gt;
+								&lt;head&gt;
+									&lt;style&gt;
+										.headerImage {
+											width: 100%;
+										}
+									&lt;/style&gt;
+								&lt;/head&gt;
+								&lt;body&gt;
+									&lt;article&gt;
+										&lt;img class="headerImage" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Cafe_on_National_Avenue%2C_Las_Vegas%2C_NM.JPG/800px-Cafe_on_National_Avenue%2C_Las_Vegas%2C_NM.JPG" /&gt;
+										&lt;h1&gt;Title&lt;/h1&gt;
+										&lt;h2&gt;Subtitle&lt;/h2&gt;
+										&lt;div class="author"&gt;Ein Bericht von Alice&lt;/div&gt;
+										&lt;div class="teaser"&gt;Hello, World!&lt;/div&gt;
+										&lt;div class="content"&gt;
+											&lt;p&gt;Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.&lt;/p&gt;
+											&lt;p&gt;Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.&lt;/p&gt;
+											&lt;h3&gt;Zwischenüberschrift&lt;/h3&gt;
+											&lt;p&gt;Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.&lt;/p&gt;
+										&lt;/div&gt;
+									&lt;/article&gt;
+								&lt;/body&gt;
+							&lt;/html&gt;
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>Exercise 7x: HTML + CSS</h2>
+					<pre>
+						<code data-trim class="language-html">
+							&lt;html&gt;
+								&lt;head&gt;
+									&lt;style&gt;
+										.products {
+											display: grid;
+											grid-template-columns: 1fr;
+										}
+										
+										@media(min-width: 800px) {
+											.products {
+												display: grid;
+												grid-template-columns: 1fr 1fr;
+											}
+										}
+										
+										@media(min-width: 1400px) {
+											.products {
+												display: grid;
+												grid-template-columns: 1fr 1fr 1fr 1fr;
+											}
+										}
+										
+										.product {
+											box-sizing: border-box;
+											border: 1px solid #000;
+											margin: 16px;
+										}
+										
+										.product img {
+											width: 100%;
+											height: auto;
+										}
+										
+										.price {
+											text-align: right;
+										}
+									&lt;/style&gt;
+								&lt;/head&gt;
+								&lt;body&gt;
+									&lt;h1&gt;Kategorie&lt;/h1&gt;
+									&lt;div class="products"&gt;
+										&lt;div class="product"&gt;
+											&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Ausschalter_Fernbedienung_2009.jpg/800px-Ausschalter_Fernbedienung_2009.jpg" /&gt;
+											&lt;h2&gt;Tolles Produkt&lt;/h2&gt;
+											&lt;div class="description"&gt;Ein ganz tolles Product, dass sie unbedingt kaufen müssen.&lt;/div&gt;
+											&lt;div class="price"&gt;99,99 €&lt;/div&gt;
+										&lt;/div&gt;
+										&lt;div class="product"&gt;
+											&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Ausschalter_Fernbedienung_2009.jpg/800px-Ausschalter_Fernbedienung_2009.jpg" /&gt;
+											&lt;h2&gt;Tolles Produkt&lt;/h2&gt;
+											&lt;div class="description"&gt;Ein ganz tolles Product, dass sie unbedingt kaufen müssen.&lt;/div&gt;
+											&lt;div class="price"&gt;99,99 €&lt;/div&gt;
+										&lt;/div&gt;
+										&lt;div class="product"&gt;
+											&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Ausschalter_Fernbedienung_2009.jpg/800px-Ausschalter_Fernbedienung_2009.jpg" /&gt;
+											&lt;h2&gt;Tolles Produkt&lt;/h2&gt;
+											&lt;div class="description"&gt;Ein ganz tolles Product, dass sie unbedingt kaufen müssen.&lt;/div&gt;
+											&lt;div class="price"&gt;99,99 €&lt;/div&gt;
+										&lt;/div&gt;
+										&lt;div class="product"&gt;
+											&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Ausschalter_Fernbedienung_2009.jpg/800px-Ausschalter_Fernbedienung_2009.jpg" /&gt;
+											&lt;h2&gt;Tolles Produkt&lt;/h2&gt;
+											&lt;div class="description"&gt;Ein ganz tolles Product, dass sie unbedingt kaufen müssen.&lt;/div&gt;
+											&lt;div class="price"&gt;99,99 €&lt;/div&gt;
+										&lt;/div&gt;
+										&lt;div class="product"&gt;
+											&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Ausschalter_Fernbedienung_2009.jpg/800px-Ausschalter_Fernbedienung_2009.jpg" /&gt;
+											&lt;h2&gt;Tolles Produkt&lt;/h2&gt;
+											&lt;div class="description"&gt;Ein ganz tolles Product, dass sie unbedingt kaufen müssen.&lt;/div&gt;
+											&lt;div class="price"&gt;99,99 €&lt;/div&gt;
+										&lt;/div&gt;
+										&lt;div class="product"&gt;
+											&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Ausschalter_Fernbedienung_2009.jpg/800px-Ausschalter_Fernbedienung_2009.jpg" /&gt;
+											&lt;h2&gt;Tolles Produkt&lt;/h2&gt;
+											&lt;div class="description"&gt;Ein ganz tolles Product, dass sie unbedingt kaufen müssen.&lt;/div&gt;
+											&lt;div class="price"&gt;99,99 €&lt;/div&gt;
+										&lt;/div&gt;
+										&lt;div class="product"&gt;
+											&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Ausschalter_Fernbedienung_2009.jpg/800px-Ausschalter_Fernbedienung_2009.jpg" /&gt;
+											&lt;h2&gt;Tolles Produkt&lt;/h2&gt;
+											&lt;div class="description"&gt;Ein ganz tolles Product, dass sie unbedingt kaufen müssen.&lt;/div&gt;
+											&lt;div class="price"&gt;99,99 €&lt;/div&gt;
+										&lt;/div&gt;
+										&lt;div class="product"&gt;
+											&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Ausschalter_Fernbedienung_2009.jpg/800px-Ausschalter_Fernbedienung_2009.jpg" /&gt;
+											&lt;h2&gt;Tolles Produkt&lt;/h2&gt;
+											&lt;div class="description"&gt;Ein ganz tolles Product, dass sie unbedingt kaufen müssen.&lt;/div&gt;
+											&lt;div class="price"&gt;99,99 €&lt;/div&gt;
+										&lt;/div&gt;
+										&lt;div class="product"&gt;
+											&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Ausschalter_Fernbedienung_2009.jpg/800px-Ausschalter_Fernbedienung_2009.jpg" /&gt;
+											&lt;h2&gt;Tolles Produkt&lt;/h2&gt;
+											&lt;div class="description"&gt;Ein ganz tolles Product, dass sie unbedingt kaufen müssen.&lt;/div&gt;
+											&lt;div class="price"&gt;99,99 €&lt;/div&gt;
+										&lt;/div&gt;
+										&lt;div class="product"&gt;
+											&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Ausschalter_Fernbedienung_2009.jpg/800px-Ausschalter_Fernbedienung_2009.jpg" /&gt;
+											&lt;h2&gt;Tolles Produkt&lt;/h2&gt;
+											&lt;div class="description"&gt;Ein ganz tolles Product, dass sie unbedingt kaufen müssen.&lt;/div&gt;
+											&lt;div class="price"&gt;99,99 €&lt;/div&gt;
+										&lt;/div&gt;
+										&lt;div class="product"&gt;
+											&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Ausschalter_Fernbedienung_2009.jpg/800px-Ausschalter_Fernbedienung_2009.jpg" /&gt;
+											&lt;h2&gt;Tolles Produkt&lt;/h2&gt;
+											&lt;div class="description"&gt;Ein ganz tolles Product, dass sie unbedingt kaufen müssen.&lt;/div&gt;
+											&lt;div class="price"&gt;99,99 €&lt;/div&gt;
+										&lt;/div&gt;
+										&lt;div class="product"&gt;
+											&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Ausschalter_Fernbedienung_2009.jpg/800px-Ausschalter_Fernbedienung_2009.jpg" /&gt;
+											&lt;h2&gt;Tolles Produkt&lt;/h2&gt;
+											&lt;div class="description"&gt;Ein ganz tolles Product, dass sie unbedingt kaufen müssen.&lt;/div&gt;
+											&lt;div class="price"&gt;99,99 €&lt;/div&gt;
+										&lt;/div&gt;
+										&lt;div class="product"&gt;
+											&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Ausschalter_Fernbedienung_2009.jpg/800px-Ausschalter_Fernbedienung_2009.jpg" /&gt;
+											&lt;h2&gt;Tolles Produkt&lt;/h2&gt;
+											&lt;div class="description"&gt;Ein ganz tolles Product, dass sie unbedingt kaufen müssen.&lt;/div&gt;
+											&lt;div class="price"&gt;99,99 €&lt;/div&gt;
+										&lt;/div&gt;
+										&lt;div class="product"&gt;
+											&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Ausschalter_Fernbedienung_2009.jpg/800px-Ausschalter_Fernbedienung_2009.jpg" /&gt;
+											&lt;h2&gt;Tolles Produkt&lt;/h2&gt;
+											&lt;div class="description"&gt;Ein ganz tolles Product, dass sie unbedingt kaufen müssen.&lt;/div&gt;
+											&lt;div class="price"&gt;99,99 €&lt;/div&gt;
+										&lt;/div&gt;
+										&lt;div class="product"&gt;
+											&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Ausschalter_Fernbedienung_2009.jpg/800px-Ausschalter_Fernbedienung_2009.jpg" /&gt;
+											&lt;h2&gt;Tolles Produkt&lt;/h2&gt;
+											&lt;div class="description"&gt;Ein ganz tolles Product, dass sie unbedingt kaufen müssen.&lt;/div&gt;
+											&lt;div class="price"&gt;99,99 €&lt;/div&gt;
+										&lt;/div&gt;
+										&lt;div class="product"&gt;
+											&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Ausschalter_Fernbedienung_2009.jpg/800px-Ausschalter_Fernbedienung_2009.jpg" /&gt;
+											&lt;h2&gt;Tolles Produkt&lt;/h2&gt;
+											&lt;div class="description"&gt;Ein ganz tolles Product, dass sie unbedingt kaufen müssen.&lt;/div&gt;
+											&lt;div class="price"&gt;99,99 €&lt;/div&gt;
+										&lt;/div&gt;
+										&lt;div class="product"&gt;
+											&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Ausschalter_Fernbedienung_2009.jpg/800px-Ausschalter_Fernbedienung_2009.jpg" /&gt;
+											&lt;h2&gt;Tolles Produkt&lt;/h2&gt;
+											&lt;div class="description"&gt;Ein ganz tolles Product, dass sie unbedingt kaufen müssen.&lt;/div&gt;
+											&lt;div class="price"&gt;99,99 €&lt;/div&gt;
+										&lt;/div&gt;
+										&lt;div class="product"&gt;
+											&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Ausschalter_Fernbedienung_2009.jpg/800px-Ausschalter_Fernbedienung_2009.jpg" /&gt;
+											&lt;h2&gt;Tolles Produkt&lt;/h2&gt;
+											&lt;div class="description"&gt;Ein ganz tolles Product, dass sie unbedingt kaufen müssen.&lt;/div&gt;
+											&lt;div class="price"&gt;99,99 €&lt;/div&gt;
+										&lt;/div&gt;
+										&lt;div class="product"&gt;
+											&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Ausschalter_Fernbedienung_2009.jpg/800px-Ausschalter_Fernbedienung_2009.jpg" /&gt;
+											&lt;h2&gt;Tolles Produkt&lt;/h2&gt;
+											&lt;div class="description"&gt;Ein ganz tolles Product, dass sie unbedingt kaufen müssen.&lt;/div&gt;
+											&lt;div class="price"&gt;99,99 €&lt;/div&gt;
+										&lt;/div&gt;
+										&lt;div class="product"&gt;
+											&lt;img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Ausschalter_Fernbedienung_2009.jpg/800px-Ausschalter_Fernbedienung_2009.jpg" /&gt;
+											&lt;h2&gt;Tolles Produkt&lt;/h2&gt;
+											&lt;div class="description"&gt;Ein ganz tolles Product, dass sie unbedingt kaufen müssen.&lt;/div&gt;
+											&lt;div class="price"&gt;99,99 €&lt;/div&gt;
+										&lt;/div&gt;
+									&lt;/div&gt;
+								&lt;/body&gt;
+							&lt;/html&gt;
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>Exercise 8: Understanding Code</h2>
+					<p>The function formats a number as a time with hours, minutes and seconds.</p>
+				</section>
+				<section>
+					<h2>Exercise 8x: Understanding Code</h2>
+					<p>The function checks, if the number is a prime number.</p>
+				</section>
+				<section>
+					<h2>Exercise 9a-9c: Understanding Code</h2>
+					<p>The function appends a message with the current timestamp to a message log.</p>
+				</section>
+				<section>
+					<h2>Exercise 10: Data types</h2>
+					<ol>
+						<li>true</li>
+						<li>true</li>
+						<li>false</li>
+						<li>true</li>
+						<li>true</li>
+						<li>false</li>
+						<li>false</li>
+						<li>true</li>
+					</ol>
+				</section>
+				<section>
+					<h2>Exercise 10x: Data types</h2>
+					<ol>
+						<li>false</li>
+						<li>true</li>
+						<li>true</li>
+						<li>true</li>
+						<li>false</li>
+					</ol>
+				</section>
+				<section>
+					<h2>Exercise 11: Data types</h2>
+					<pre>
+						<code data-trim class="language-javascript">
+							let a = 1;
+							let b = 9;
+							let c = 91;
+							let d = ' step';
+							let e = [];
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>Exercise 11x: Data types</h2>
+					<pre>
+						<code data-trim class="language-javascript">
+							let a = 10;
+							let b = true;
+							let c = null;
+							let d = '1';
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>Exercise 12: Interactive DOM</h2>
+					<pre>
+						<code data-trim class="language-html">
+							&lt;html&gt;
+								&lt;head&gt;
+								&lt;/head&gt;
+								&lt;body&gt;
+									&lt;input name="newItem" id="newItem"&gt;&lt;/input&gt;
+									&lt;button id="addItem"&gt;Hinzufügen&lt;/button&gt;
+									&lt;div id="todoList"&gt;&lt;/div&gt;
+									
+									&lt;script&gt;
+										const todoList = document.getElementById('todoList');
+										const addItemButton = document.getElementById('addItem');
+										const newItemText = document.getElementById('newItem');
+										
+										addItemButton.addEventListener('click', () =&gt; {
+											const text = newItemText.value;
+											
+											todoList.innerHTML += `
+												&lt;label class="todoItem"&gt;
+													&lt;input type="checkbox"&gt;&lt;/input&gt;&lt;span&gt;${text}&lt;/span&gt;
+												&lt;/label&gt;
+											`
+											
+											newItemText.value = '';
+										});
+									&lt;/script&gt;
+								&lt;/body&gt;
+							&lt;/html&gt;
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>Exercise 12x: Interactive DOM</h2>
+					<pre>
+						<code data-trim class="language-html">
+							&lt;html&gt;
+								&lt;head&gt;
+									&lt;style&gt;
+										.todoItem {
+											display: block;
+										}
+									&lt;/style&gt;
+								&lt;/head&gt;
+								&lt;body&gt;
+									&lt;h1&gt;Todos&lt;/h1&gt;
+									&lt;input name="newItem" id="newItem"&gt;&lt;/input&gt;
+									&lt;button id="addItem"&gt;Hinzufügen&lt;/button&gt;
+									&lt;div id="todoList"&gt;&lt;/div&gt;
+									&lt;h1&gt;Done&lt;/h1&gt;
+									&lt;div id="doneList"&gt;&lt;/div&gt;
+									
+									&lt;script&gt;
+										const todoList = document.getElementById('todoList');
+										const doneList = document.getElementById('doneList');
+										const addItemButton = document.getElementById('addItem');
+										const newItemText = document.getElementById('newItem');
+										
+										const todoItems = [];
+										
+										function renderTodoItem (todoItem) {
+											todoItems.push(todoItem);
+											
+											const todoItemElement = document.createElement('label');
+											todoItemElement.classList.add('todoItem');
+											
+											const checkbox = document.createElement('input');
+											checkbox.setAttribute('type', 'checkbox');
+											checkbox.checked = todoItem.done;
+											checkbox.addEventListener('change', () =&gt; {
+												todoItem.done = checkbox.checked;
+												localStorage.setItem('savedTodoItems', JSON.stringify(todoItems));
+												
+												if (checkbox.checked) {
+													todoList.removeChild(todoItemElement);
+													doneList.appendChild(todoItemElement);
+												} else {
+													doneList.removeChild(todoItemElement);
+													todoList.appendChild(todoItemElement);
+												}
+											});
+											
+											todoItemElement.appendChild(checkbox);
+											
+											const label = document.createElement('span');
+											label.innerHTML = todoItem.text;
+
+											todoItemElement.appendChild(label);
+											
+											if (todoItem.done) {
+												doneList.appendChild(todoItemElement);
+											} else {
+												todoList.appendChild(todoItemElement);
+											}
+										}
+										
+										addItemButton.addEventListener('click', () =&gt; {
+											const text = newItemText.value;
+											const todoItem = {
+												text,
+												done: false
+											}
+											
+											renderTodoItem(todoItem);
+											
+											localStorage.setItem('savedTodoItems', JSON.stringify(todoItems));
+											
+											newItemText.value = '';
+										});
+										
+										const savedTodoItems = localStorage.getItem('savedTodoItems');
+										
+										if (savedTodoItems) {
+											const savedTodoItemsList = JSON.parse(savedTodoItems);
+											
+											for (const todoItem of savedTodoItemsList) {
+												renderTodoItem(todoItem);
+											}
+										}
+									&lt;/script&gt;
+								&lt;/body&gt;
+							&lt;/html&gt;
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>Exercise 13: Understanding Code</h2>
+					<p>The function calculates the value of an operation given as mode using the two operands a and b.</p>
+				</section>
+				<section>
+					<h2>Exercise 13x: Understanding Code</h2>
+					<p>The function splits a number given as value into its prime factors.</p>
+				</section>
+				<section>
+					<h2>Exercise 14: Understanding Code</h2>
+					<p>The function determines the number of steps it takes to reach 1 when deviding by two if the number is even und multiplying by 3 and adding 1 when the number is odd.</p>
+				</section>
+				<section>
+					<h2>Exercise 14x: Understanding Code</h2>
+					<p>The code determines all prime numbers until 100 by using the Sieve of Eratosthenes method.</p>
 				</section>
 			</div>
 		</div>

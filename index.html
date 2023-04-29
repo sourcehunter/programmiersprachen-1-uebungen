@@ -232,6 +232,429 @@
 						<li>3D-Scene</li>
 					</ol>
 				</section>
+				<section>
+					<h2>Recap HTML Tags</h2>
+				</section>
+				<section>
+					<h2>Recap CSS Selectors</h2>
+				</section>
+				<section>
+					<h2>Recap DOM Manipulation</h2>
+				</section>
+				<section>
+					<h2>Recap CSS Layout</h2>
+				</section>
+				<section>
+					<h2>Recap Datatypes in JS</h2>
+				</section>
+				<section>
+					<h2>Q&A</h2>
+				</section>
+				<section>
+					<h3>Exercise 6: Understanding Code</h3>
+					<p>Present the code of your symbol without running it and let other students explain, what it does.</p>
+				</section>
+				<section>
+					<h3>Exercise 7: HTML + CSS</h3>
+					<p style="text-align: left;">Build an HTML structure that represents an article with the following features:</p>
+					<ul>
+						<li>a header image covering the full width of the screen</li>
+						<li>a main title</li>
+						<li>a sub title</li>
+						<li>an author attribution</li>
+						<li>a teaser paragraph</li>
+						<li>the article content</li>
+					</ul>
+					<p style="text-align: left;">Use CSS where needed.</p>
+				</section>
+				<section>
+					<h3>Exercise 7x: HTML + CSS</h3>
+					<p style="text-align: left;">Build an HTML structure for a tile grid to display products in an online shop with the following features:</p>
+					<ul>
+						<li>a heading with a category name</li>
+						<li>per product display: a product image, a name, a short description of about 3 lines of text and a price</li>
+						<li>the grid must contain space for at least 20 products</li>
+						<li>depending on screen size display between 1 and 4 products per row</li>
+					</ul>
+					<p style="text-align: left;">Use CSS where needed.</p>
+				</section>
+				<section>
+					<h3>Exercise 8: Understanding Code</h3>
+					<p>Without running the code: What is the result?</p>
+					<pre>
+						<code data-trim class="language-javascript">
+							function format (value) {
+								let a = value % 60;
+								let rem = (value - a) / 60;
+								let b = rem % 60;
+								let c = (rem - b) / 60;
+								
+								return `{c}:${b}:${a}`;
+							}
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h3>Exercise 8x: Understanding Code</h3>
+					<p>Without running the code: What is the result?</p>
+					<pre style="font-size: 0.45em;">
+						<code data-trim class="language-javascript">
+							function check (value) {
+								if (typeof value !== 'number') {
+									return false;
+								} else {
+									let i = 2;
+									
+									while (i * i <= value) {
+										if (value % i === 0) {
+											return false;
+										}
+										
+										i += i === 2 ? 1 : 2;
+									}
+									
+									return true;
+								}
+							}
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h3>Exercise 9a: Understanding Code</h3>
+					<p>Without running the code: What is the result?</p>
+					<pre style="font-size: 0.5em;">
+						<code data-trim class="language-javascript">
+							function handle (val) {
+								const c = document.getElementById('c');
+								const m = document.createElement('div');
+								m.classList.add('m');
+								const t = document.createElement('div');
+								t.classList.add('t');
+								t.innerHTML = new Date().toLocaleString();
+								const x = document.createElement('div');
+								x.classList.add('x');
+								x.innerHTML = text;
+								
+								m.appendChild(t);
+								m.appendChild(x);
+								
+								c.appendChild(m);
+							}
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h3>Exercise 9b: Understanding Code</h3>
+					<p>Without running the code: What is the result?</p>
+					<pre style="font-size: 0.5em;">
+						<code data-trim class="language-javascript">
+							function messageReceived (text) {
+								const chatWindow = document.getElementById('chatWindow');
+								const message = document.createElement('div');
+								message.classList.add('message');
+								const timeStamp = document.createElement('div');
+								timeStamp.classList.add('timestamp');
+								timeStamp.innerHTML = new Date().toLocaleString();
+								const messageText = document.createElement('div');
+								messageText.classList.add('messageText');
+								messageText.innerHTML = text;
+								
+								message.appendChild(timeStamp);
+								message.appendChild(messageText);
+								
+								chatWindow.appendChild(message);
+							}
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h3>Exercise 9c: Understanding Code</h3>
+					<p>Without running the code: What is the result?</p>
+					<pre>
+						<code data-trim class="language-javascript">
+							function messageReceived (text) {
+								const chatWindow = document.getElementById('chatWindow');
+								chatWindow.innerHTML += `
+									&lt;div class="message"&gt;
+										&lt;div class="timestamp"&gt;${new Date().toLocaleString()}&lt;/div&gt;
+										&lt;div class="messageText"&gt;${text}&lt;/div&gt;
+									&lt;/div&gt;
+								`
+							}
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h3>Exercise 10: Conditions</h3>
+					<p>Which of the following statements are true?</p>
+					<pre style="font-size: 0.5em;">
+						<code data-trim class="language-javascript">
+							let a = 10; let b = true; let c = {}; let d = 'Hello, World!'; let e = {};
+							
+							a === 10 // 1
+							b // 2
+							true && !b // 3
+							typeof c === 'object' // 4
+							c.x === undefined // 5
+							a == b // 6
+							c == e // 7
+							a + b === 11 // 8
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h3>Exercise 10x: Conditions</h3>
+					<p>Which of the following statements are true?</p>
+					<pre>
+						<code data-trim class="language-javascript">
+							let a = 10; let b = false; let c = null; let d = '';
+							
+							typeof (a + (b ? 10 : 'x')) === 'number' // 1
+							typeof (d + c) === 'string' // 2
+							typeof c === 'object' // 3
+							(b == 2 ? typeof a : typeof d) === 'string' // 4
+							typeof (d == false ? null : false) === 'boolean' // 5
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h3>Exercise 11: Conditions</h3>
+					<p>Which values do you need to assign to the variables, so that all statements become true.</p>
+					<pre>
+						<code data-trim class="language-javascript">
+							a + b === 10
+							b + c === 100
+							a + d === '1 step'
+							typeof e === 'object'
+							e !== null
+							e.length !== undefined
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h3>Exercise 11x: Conditions</h3>
+					<p>Which values do you need to assign to the variables, so that all statements become true.</p>
+					<pre>
+						<code data-trim class="language-javascript">
+							a + c == 10
+							b == d
+							b * b === 1
+							typeof d !== 'object'
+							d[0] === '1'
+							typeof c === 'object'
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h3>Exercise 12: Interactive DOM</h3>
+					<p>Build a small TODO-Application with the following features:</p>
+					<ul>
+						<li>an input field and button where the user can add a new todo item</li>
+						<li>a list that shows all todo items</li>
+						<li>the user can mark a todo item as done</li>
+						<li>indicate through a visual state when a todo item is done</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Exercise 12x: Interactive DOM</h3>
+					<p>Extend your small TODO-Application with the following features:</p>
+					<ul>
+						<li>when a todo item is done, move it into a separate list of finished todo items</li>
+						<li>save todo items between page reloads</li>
+						<li>restore the list of saved todo items when the user opens the page</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Recap Conditions</h2>
+				</section>
+				<section>
+					<h3>Exercise 13: Understanding Code</h3>
+					<p>Without running the code: What is the result?</p>
+					<pre style="font-size: 0.5em;">
+						<code data-trim class="language-javascript">
+							function calculate (mode, a, b) {
+								if (mode === '+') {
+									return a + b;
+								} else if (mode === '*') {
+									return a * b;
+								} else if (mode === '/') {
+									return a / b;
+								} else if (mode === '-') {
+									return a - b;
+								} else if (mode === '^') {
+									return Math.pow(a, b);
+								} else {
+									return Number.NaN;
+								}
+							}
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h3>Exercise 13x: Understanding Code</h3>
+					<p>Without running the code: What is the result?</p>
+					<pre style="font-size: 0.45em;">
+						<code data-trim class="language-javascript">
+							function factors (value) {
+								let rem = value;
+								let factors = [];
+								
+								let i = 2;
+								
+								while (i <= rem) {
+									while (rem % i === 0) {
+										factors.push(i);
+										rem /= i;
+									}
+									
+									i += i === 2 ? 1 : 2;
+								}
+								
+								return factors;
+							}
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>Recap Loops</h2>
+				</section>
+				<section>
+					<h3>Exercise 14: Understanding Code</h3>
+					<p>Without running the code: What is the result?</p>
+					<pre style="font-size: 0.5em">
+						<code data-trim class="language-javascript">
+							function count (n) {
+								let steps = 0;
+								
+								while (n > 1) {
+									if (n % 2 === 0) {
+										n /= 2;
+									} else {
+										n = n * 3 + 1;
+									}
+									
+									steps += 1;
+								}
+								
+								return steps;
+							}
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h3>Exercise 14x: Understanding Code</h3>
+					<p>Without running the code: What is the result?</p>
+					<pre>
+						<code data-trim class="language-javascript">
+							let max = 100
+							let numbers = []
+							
+							for (let i = 0; i <= max; i++) {
+								numbers[i] = i > 1;
+							}
+							
+							for (let n = 2; n <= max; n++) {
+								for (let i = n * 2; i <= max; i += n) {
+									numbers[i] = false;
+								}
+							}
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>Exercise 15: Loops</h2>
+					<p style="text-align: left;">Write an HTML page, that lets the user choose between the following series, prompts him for the number of elements to be calculated and outputs the series to the page.</p>
+					<ol>
+						<li>F<sub>n</sub> = n * n; F<sub>1</sub> = 1</li>
+						<li>F<sub>n</sub> = F<sub>n-1</sub> * 2; F<sub>1</sub> = 1</li>
+						<li>F<sub>n</sub> = F<sub>n-1</sub> + F<sub>n-2</sub>; F<sub>1</sub> = F<sub>2</sub> = 1</li>
+						<li>F<sub>n</sub> = nth prime number; F<sub>1</sub> = 2</li>
+					</ol>
+				</section>
+				<section>
+					<h2>Exercise 15x: Loops</h2>
+					<p style="text-align: left;">Write an HTML page, that lets the user define a series, prompts him for the number of elements to be calculated and outputs the series to the page.</p>
+					<p style="text-align: left;">A series is defined by the following properties:</p>
+					<ul>
+						<li>a formula for F<sub>n</sub> (you may limit use to operations +, -, *, and / and values n, F<sub>n-1</sub> and F<sub>n-2</sub>)</li>
+						<li>start values for F<sub>1</sub> and F<sub>2</sub></li>
+					</ul>
+				</section>
+				<section>
+					<h2>Exercise 16: Loops</h2>
+					<p style="text-align: left;">In p5.js create a function that outputs a checker board pattern that fits into a defined square, alternating between white and black squares.</p>
+					<p style="text-align: left;">Assume the following variables are given:</p>
+					<ul>
+						<li>n: the number of squares in each direction of the pattern</li>
+						<li>x: the x position of the checker board</li> 
+						<li>y: the y position of the checker board</li> 
+						<li>size: the size in pixels of the checker board</li> 
+					</ul>
+				</section>
+				<section>
+					<h2>Exercise 16x: Loops</h2>
+					<p>In p5.js create a function that seamlessly fills the whole drawing space with equilateral triangles with an arbitrarily chosen edge length n.</p>
+				</section>
+				<section>
+					<h2>Exercise 17: If statements</h2>
+					<p>Adapt the following p5.js scene file to correctly represent the state idicated by boolean values night, lightsOn and carParked.</p>
+					<pre>
+						<code data-trim class="language-javascript">
+							function setup() {
+								createCanvas(400, 400);
+							}
+
+							function draw() {
+								background(220);
+
+								let night = false;
+								let lightsOn = false;
+								let carParked = false;
+
+								// house
+								translate(50, 150);
+								rect(0, 0, 200, 100);
+								triangle(0, 0, 100, -50, 200, 0);
+
+								// windows
+								translate(20, 20);
+								rect(0, 0, 30, 50);
+								rect(30, 0, 30, 50);
+								translate(100, 0);
+								rect(0, 0, 30, 50);
+								rect(30, 0, 30, 50);
+
+								resetMatrix();
+								// car
+								translate(50, 300);
+								beginShape();
+								vertex(0, 0);
+								vertex(20, 0);
+								vertex(30 ,-30);
+								vertex(100, -30);
+								vertex(110, 0);
+								vertex(130 ,0);
+								vertex(130, 20);
+								vertex(0, 20);
+								endShape(CLOSE);
+
+								circle(30, 20, 20);
+								circle(100, 20, 20);
+							}
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>Exercise 17X: If statements</h2>
+					<p>Instead of boolean values, use the simulation time to represent the following daily routine:</p>
+					<ul>
+						<li>day light from 7 am to 7 pm</li>
+						<li>get up at 6 am (turn lights on)</li>
+						<li>go to work at 7:30 am (turn lights off when day light outside, use car to get to work)</li>
+						<li>get back from work at 4:30 pm (park car, turn lights on when night)</li>
+						<li>go to bed at 10 pm (turn lights off)</li>
+					</ul>
+				</section>
 			</div>
 		</div>
 
