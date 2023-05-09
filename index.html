@@ -597,7 +597,7 @@
 				</section>
 				<section>
 					<h2>Exercise 17: If statements</h2>
-					<p>Adapt the following p5.js scene file to correctly represent the state idicated by boolean values night, lightsOn and carParked.</p>
+					<p>Adapt the following p5.js scene file to correctly represent the state indicated by boolean values night, lightsOn and carParked.</p>
 					<pre>
 						<code data-trim class="language-javascript">
 							function setup() {
@@ -654,6 +654,115 @@
 						<li>get back from work at 4:30 pm (park car, turn lights on when night)</li>
 						<li>go to bed at 10 pm (turn lights off)</li>
 					</ul>
+				</section>
+				<section>
+					<h2>Recap Objects</h2>
+				</section>
+				<section>
+					<h2>Recap Arrays</h2>
+				</section>
+				<section>
+					<h3>Exercise 18: Understanding Code</h3>
+					<p>Without running the code: What is the result?</p>
+					<pre>
+						<code data-trim class="language-javascript">
+							function count (values) {
+								return values.filter((item) => item % 2 == 0).length
+							}
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h3>Exercise 18x: Understanding Code</h3>
+					<p>Without running the code: What is the result?</p>
+					<pre>
+						<code data-trim class="language-javascript">
+							function calculate (values) {
+								return values
+									.filter((item) => item % 2 == 0)
+									.map((item) => item * item)
+									.reduce((accumulator, item) => accumulator + item, 0);
+							}
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h3>Exercise 19: Understanding Code</h3>
+					<p>Without running the code: What is the result?</p>
+					<pre style="font-size: 0.35em">
+						<code data-trim class="language-javascript">
+							class Account {
+								constructor () {
+									this.balance = 0;
+								}
+								
+								deposit (value) {
+									this.balance += value;
+								}
+								
+								transferTo (otherAccount, value) {
+									otherAccount.deposit(value);
+									this.balance -= value;
+								}
+							}
+							
+							const account1 = new Account();
+							const account2 = new Account();
+							
+							account1.deposit(200);
+							account1.transferTo(account2, 100);
+							account1.deposit(50);
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h3>Exercise 19x: Understanding Code</h3>
+					<p>Without running the code: What is the result?</p>
+					<pre style="font-size: 0.25em">
+						<code data-trim class="language-javascript">
+							class ShoppingCart {
+								products = [];
+								
+								addProduct (product) {
+									this.products.push(product);
+								}
+								
+								getTotal () {
+									return this.products.reduce((accumulator, product) => accumulator + product.price, 0);
+								}
+							}
+							
+							const prices = {
+								Beer: 1.99,
+								Chips: 3.99,
+								Water: 0.99,
+								'Vanilla Icecream': 12.49,
+							}
+							
+							class Product {
+								constructor (name) {
+									this.name = name;
+									this.price = prices[name];
+								}
+							}
+							
+							const cart = new ShoppingCart();
+							cart.addProduct(new Product('Beer'));
+							cart.addProduct(new Product('Beer'));
+							cart.addProduct(new Product('Chips'));
+							cart.getTotal();
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h3>Exercise 20: Arrays</h3>
+					<p style="text-align: left;">Using only creating arrays, accessing array elements and for loops to iterate through arrays, implement one of the following functions for arrays:</p>
+					<p style="text-align: left;">easy: copyWithin(), concat(), indexOf(), lastIndexOf(), map(), reverse(), slice(), some(), push(), pop()</p>
+					<p style="text-align: left;">challenging: every(), filter(), flat(), flatMap(), forEach(), reduce(), reduceRight()</p>
+				</section>
+				<section>
+					<h3>Exercise 20x: Arrays</h3>
+					<p>Using only creating arrays, accessing array elements and for loops to iterate through arrays, implement a sort function for arrays.</p>
 				</section>
 			</div>
 		</div>

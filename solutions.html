@@ -559,6 +559,364 @@
 					<h2>Exercise 14x: Understanding Code</h2>
 					<p>The code determines all prime numbers until 100 by using the Sieve of Eratosthenes method.</p>
 				</section>
+				<section>
+					<h2>Exercise 15: Loops</h2>
+					<pre>
+						<code data-trim class="language-html">
+							&lt;html&gt;
+								&lt;head&gt;
+									&lt;style&gt;
+										label {
+											display: block;
+										}
+									&lt;/style&gt;
+								&lt;/head&gt;
+								&lt;body&gt;
+									&lt;label for="series1"&gt;&lt;input type="radio" name="series" id="series1"&gt; F&lt;sub&gt;n&lt;/sub&gt; = n * n&lt;/label&gt;&lt;/input&gt;
+									&lt;label for="series2"&gt;&lt;input type="radio" name="series" id="series2"&gt; F&lt;sub&gt;n&lt;/sub&gt; = F&lt;sub&gt;n-1&lt;/sub&gt; * 2&lt;/label&gt;&lt;/input&gt;
+									&lt;label for="series3"&gt;&lt;input type="radio" name="series" id="series3"&gt; F&lt;sub&gt;n&lt;/sub&gt; = F&lt;sub&gt;n-1&lt;/sub&gt; + F&lt;sub&gt;n-2&lt;/sub&gt;&lt;/label&gt;&lt;/input&gt;
+									&lt;label for="series4"&gt;&lt;input type="radio" name="series" id="series4"&gt; F&lt;sub&gt;n&lt;/sub&gt; = nth prime number&lt;/label&gt;&lt;/input&gt;
+									&lt;label for="numberOfElements"&gt;Number of Elements: &lt;input name="numberOfElements" id="numberOfElements"&gt;&lt;/input&gt;&lt;/label&gt;
+									&lt;button id="calculate"&gt;Calculate&lt;/button&gt;
+									&lt;div id="output"&gt;&lt;/div&gt;
+									
+									&lt;script&gt;
+										const seriesRadioButtons = []
+										
+										for (let i = 1; i &lt;= 4; i++) {
+											seriesRadioButtons.push(document.getElementById('series' + i));
+										}
+										
+										function getActiveRadioButton (radioButtons) {
+											for (const button of radioButtons) {
+												if (button.checked) {
+													return button.getAttribute('id');
+												}
+											}
+											
+											return null;
+										}
+										
+										function isPrime (n) {
+											for (let i = 2; i * i &lt; n; i += i &lt; 3 ? 1 : 2) {
+												if (n % i === 0) {
+													return false;
+												}
+											}
+											
+											return true;
+										}
+										
+										const numberOfElementsInput = document.getElementById('numberOfElements');
+										const output = document.getElementById('output');
+										const calculateButton = document.getElementById('calculate');
+										
+										calculateButton.addEventListener('click', () =&gt; {
+											const selectedSeries = getActiveRadioButton(seriesRadioButtons);
+											const numberOfElements = parseInt(numberOfElementsInput.value, 10);
+											let elements = []
+											
+											if (!Number.isNaN(numberOfElements) && selectedSeries !== null) {
+												let lastPrime = 1;
+												
+												for (let i = 0; i &lt; numberOfElements; i++) {
+													let n = i + 1;
+													let element = null
+													
+													if (selectedSeries === 'series1') {
+														element = n * n;
+													} else if (selectedSeries === 'series2') {
+														if (i === 0) {
+															element = 1;
+														} else {
+															element = elements[i - 1] * 2;
+														}
+													} else if (selectedSeries === 'series3') {
+														if (i &lt; 2) {
+															element = 1;
+														} else {
+															element = elements[i - 2] + elements[i - 1];
+														}
+													} else if (selectedSeries === 'series4') {
+														do {
+															lastPrime += lastPrime &lt; 3 ? 1 : 2;
+														} while (!isPrime(lastPrime));
+														
+														element = lastPrime;
+													}
+													
+													if (element !== null) {
+														elements.push(element);
+													}
+												}
+											}
+											
+											output.innerHTML = elements.join(', ');
+										});
+									&lt;/script&gt;
+								&lt;/body&gt;
+							&lt;/html&gt;
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>Exercise 15x: Loops</h2>
+					<pre>
+						<code data-trim class="language-html">
+							&lt;html&gt;
+								&lt;head&gt;
+									&lt;style&gt;
+										label {
+											display: block;
+										}
+									&lt;/style&gt;
+								&lt;/head&gt;
+								&lt;body&gt;
+									&lt;label for="formula"&gt;Formula: &lt;input name="formula" id="formula"&gt;&lt;/input&gt; Please enter the formula for your series. You may use n and any F(n - k) and any operation.&lt;/label&gt;
+									&lt;label for="startValues"&gt;Start values: &lt;input name="startValues" id="startValues"&gt;&lt;/input&gt; Please enter start values separated by comma.&lt;/label&gt;
+									&lt;label for="numberOfElements"&gt;Number of Elements: &lt;input name="numberOfElements" id="numberOfElements"&gt;&lt;/input&gt;&lt;/label&gt;
+									&lt;button id="calculate"&gt;Calculate&lt;/button&gt;
+									&lt;div id="output"&gt;&lt;/div&gt;
+									
+									&lt;script&gt;
+										const formulaInput = document.getElementById('formula');
+										const numberOfElementsInput = document.getElementById('numberOfElements');
+										const startValuesInput = document.getElementById('startValues');
+										const output = document.getElementById('output');
+										const calculateButton = document.getElementById('calculate');
+										
+										calculateButton.addEventListener('click', () =&gt; {
+											const numberOfElements = parseInt(numberOfElementsInput.value, 10);
+											const formula = formulaInput.value;
+											const startValues = startValuesInput.value.split(',').map((i) =&gt; parseInt(i, 10));
+											let elements = startValues.slice();
+											
+											function F (n) {
+												return elements[n - 1];
+											}
+											
+											const calculateFormula = eval('(n) =&gt; ' + formula);
+											
+											if (!Number.isNaN(numberOfElements) && formula !== '') {
+												for (let i = startValues.length; i &lt; numberOfElements; i++) {
+													let n = i + 1;
+													let element = calculateFormula(n);
+													
+													if (element !== null) {
+														elements.push(element);
+													}
+												}
+											}
+											
+											output.innerHTML = elements.join(', ');
+										});
+									&lt;/script&gt;
+								&lt;/body&gt;
+							&lt;/html&gt;
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>Exercise 16: Loops</h2>
+					<pre>
+						<code data-trim class="language-javascript">
+							function setup() {
+								createCanvas(400, 400);
+							}
+
+							function checkerBoard (x, y, size, n) {
+								translate(x, y);
+								
+								let sideLength = size / n;
+								
+								for (let i = 0; i &lt; n; i++) {
+									for (let j = 0; j &lt; n; j++) {
+										fill(((i + j) % 2) * 255);
+										rect(i * sideLength, j * sideLength, sideLength, sideLength);
+									}
+								}
+							}
+
+							function draw() {
+								background(220);
+								checkerBoard(50, 50, 300, 10);
+							}
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>Exercise 16x: Loops</h2>
+					<pre>
+						<code data-trim class="language-javascript">
+							function setup() {
+								createCanvas(400, 400);
+							}
+
+							function triangleFill (n) {
+								const triangleHeight = sqrt(3) * n / 2;
+								const numRows = ceil(height / triangleHeight);
+								
+								for (let row = 0; row &lt; numRows; row++) {
+									let up = row % 2 === 0;
+									let x = -n / 2;
+									let y = (row + 1 - row % 2) * triangleHeight;
+									
+									beginShape(TRIANGLE_STRIP);
+									vertex(x, y);
+									
+									while (x &lt;= width + n) {
+										y += (up ? -1 : 1) * triangleHeight;
+										x += n / 2;
+
+										vertex(x, y);
+
+										up = !up;
+									}
+									endShape();
+								}
+							}
+
+							function draw() {
+								background(220);
+								triangleFill(90);
+							}
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>Exercise 17: If Statements</h2>
+					<pre>
+						<code data-trim class="language-javascript">
+							function setup() {
+								createCanvas(400, 400);
+							}
+
+							function draw() {
+								let night = false;
+								let lightsOn = false;
+								let carParked = false;
+
+								background(night ? 0 : 220);
+
+								// house
+								translate(50, 150);
+								rect(0, 0, 200, 100);
+								triangle(0, 0, 100, -50, 200, 0);
+
+								// windows
+								if (lightsOn) {
+									fill(255, 255, 0);
+								} else {
+									fill(255);
+								}
+								translate(20, 20);
+								rect(0, 0, 30, 50);
+								rect(30, 0, 30, 50);
+								translate(100, 0);
+								rect(0, 0, 30, 50);
+								rect(30, 0, 30, 50);
+								fill(255);
+
+								resetMatrix();
+								
+								if (carParked) {
+									// car
+									translate(50, 300);
+									beginShape();
+									vertex(0, 0);
+									vertex(20, 0);
+									vertex(30 ,-30);
+									vertex(100, -30);
+									vertex(110, 0);
+									vertex(130 ,0);
+									vertex(130, 20);
+									vertex(0, 20);
+									endShape(CLOSE);
+
+									circle(30, 20, 20);
+									circle(100, 20, 20);
+								}
+							}
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>Exercise 17x: If Statements</h2>
+					<pre>
+						<code data-trim class="language-javascript">
+							function setup() {
+								createCanvas(400, 400);
+							}
+
+							let timeOfDay = 0;
+
+							function draw() {
+								timeOfDay += deltaTime / 1000;
+								if (timeOfDay &gt; 24) {
+									timeOfDay -= 24;
+								}
+								
+								const dayStart = 7;
+								const dayEnd = 19;
+								const getUp = 6;
+								const lieDown = 22;
+								const workStart = 7.5;
+								const workEnd = 16.5;
+
+								let night = timeOfDay &lt; dayStart || timeOfDay &gt; dayEnd;
+								let working = timeOfDay &gt;= workStart && timeOfDay &lt;= workEnd;
+								let carParked = !working;
+								let lightsOn = timeOfDay &gt;= getUp && timeOfDay &lt;= lieDown && night && !working;
+
+								background(night ? 0 : 220);
+								
+								textAlign(LEFT, TOP);
+								fill(night ? 255 : 0);
+								text(timeOfDay.toFixed(1), 10, 10);
+								fill(255);
+
+								// house
+								translate(50, 150);
+								rect(0, 0, 200, 100);
+								triangle(0, 0, 100, -50, 200, 0);
+
+								// windows
+								if (lightsOn) {
+									fill(255, 255, 0);
+								} else {
+									fill(255);
+								}
+								translate(20, 20);
+								rect(0, 0, 30, 50);
+								rect(30, 0, 30, 50);
+								translate(100, 0);
+								rect(0, 0, 30, 50);
+								rect(30, 0, 30, 50);
+								fill(255);
+
+								resetMatrix();
+								
+								if (carParked) {
+									// car
+									translate(50, 300);
+									beginShape();
+									vertex(0, 0);
+									vertex(20, 0);
+									vertex(30 ,-30);
+									vertex(100, -30);
+									vertex(110, 0);
+									vertex(130 ,0);
+									vertex(130, 20);
+									vertex(0, 20);
+									endShape(CLOSE);
+
+									circle(30, 20, 20);
+									circle(100, 20, 20);
+								}
+							}
+						</code>
+					</pre>
+				</section>
 			</div>
 		</div>
 
