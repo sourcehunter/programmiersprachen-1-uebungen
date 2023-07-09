@@ -1,0 +1,82 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link href="css/fontawesome.css" rel="stylesheet">
+	<link href="css/solid.css" rel="stylesheet">
+	<link href="css/app-hard.css" rel="stylesheet">
+	<script src="js/app-hard.js"></script>
+</head>
+<body>
+	<div class="app">
+		<div class="app-header">
+			<div class="app-title">
+				Memory
+			</div>
+			<div id="score">Score Player 1: 0</div>
+			<div id="timer">00:00</div>
+		</div>
+		<div id="content">
+		</div>
+		<div class="app-footer">
+			Sound: Flip.ogg by egomassive <a href="https://freesound.org/people/egomassive/sounds/536782/">https://freesound.org/people/egomassive/sounds/536782/</a> | CC BY 3.0
+		</div>
+	</div>
+	<!--
+		Storing the views and templates in a hidden div enables us to use plain HTML to define them, instead of building them with javascript code.
+		
+		Views are single instance pages that are shown depending on the game state. They will be placed in the div with ID content when required.
+		
+		Templates are components that will be reused multiple times for building more complex views, for example cards.
+	-->
+	<div id="views">
+		<div id="start-game-view">
+			<button id="show-highscore-list">Show Highscore List</button>
+			<h1>Select number of players</h1>
+			<div id="player-selection">
+				<div id="one-player-mode" class="selected">1 Player</div>
+				<div id="two-player-mode">2 Players</div>
+			</div>
+			<h1>Select difficulty</h1>
+			<button id="start-game-easy">Easy</button>
+			<button id="start-game-medium">Medium</button>
+			<button id="start-game-hard">Hard</button>
+			<button id="start-game-extra-hard">Extra Hard</button>
+		</div>
+		<div id="enter-highscore-view">
+			<div id="winner-name">Player 1 won!</div>
+			<div id="achieved-score">Your Score: 0</div>
+			<div id="achieved-time">Your Time: 0</div>
+			<div id="used-moves">Used Moves: 0</div>
+			<input
+				type="text"
+				id="highscore-name"
+				placeholder="Name"
+			></input>
+			<button id="enter-highscore">Enter Highscore</button>
+		</div>
+		<div id="highscores">
+			<div class="highscores-list">
+			</div>
+			<button>Play Again</button>
+		</div>
+		<div id="cards"></div>
+	</div>
+	<div id="templates">
+		<div class="highscore-line">
+			<div class="place"></div>
+			<div class="score"></div>
+			<div class="name"></div>
+		</div>
+		<div class="cards-container">
+			<div class="card"></div>
+			<div class="symbol">
+				<i class="fa-solid"></i>
+			</div>
+		</div>
+	</div>
+	<audio id="card-flip-sound">
+	  <source src="sounds/536782__egomassive__flip.mp3" type="audio/mpeg" />
+	  <source src="sounds/536782__egomassive__flip.ogg" type="audio/ogg" />
+	</audio>
+</body>
+</html>

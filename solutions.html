@@ -917,6 +917,716 @@
 						</code>
 					</pre>
 				</section>
+				<section>
+					<h3>Exercise 18: Understanding Code</h3>
+					<p>This function counts the number of even numbers in a given array.</p>
+				</section>
+				<section>
+					<h3>Exercise 18x: Understanding Code</h3>
+					<p>This function calculates the sum of the squares of all even numbers in a given array.</p>
+				</section>
+				<section>
+					<h3>Exercise 19: Understanding Code</h3>
+					<p>This code represents a bank account with a certain balance and handling transfers between accounts.</p>
+				</section>
+				<section>
+					<h3>Exercise 19x: Understanding Code</h3>
+					<p>This code represents a shopping cart you can add products to and caclulates the total amount the user has to pay.</p>
+				</section>
+				<section>
+					<h2>Exercise 20: Arrays (1)</h2>
+					<p>Solution implementing the basic use case for each function.</p>
+					<pre>
+						<code data-trim class="language-javascript">
+							function copyWithin (array, destination, start, end) {
+								for (let offset = 0; offset &lt; end - start; offset++) {
+									array[destination + offset] = array[start + offset];
+								}
+								
+								return array;
+							}
+							
+							function concat (array1, array2) {
+								const result = [];
+								
+								for (let i = 0; i &lt; array1.length; i++) {
+									result[i] = array1[i];
+								}
+								
+								for (let i = 0; i &lt; array2.length; i++) {
+									result[i + array1.length] = array2[i];
+								}
+								
+								return result;
+							}
+							
+							function indexOf (array, element) {
+								for (let i = 0; i &lt; array.length; i++) {
+									if (array[i] === element) {
+										return i;
+									}
+								}
+								
+								return -1;
+							}
+							
+							function lastIndexOf (array, element) {
+								for (let i = array.length - 1; i &gt;= 0; i--) {
+									if (array[i] === element) {
+										return i;
+									}
+								}
+								
+								return -1;
+							}
+							
+							function pop (array) {
+								const element = array[array.length - 1];
+								
+								array.length--;
+								
+								return element;
+							}
+							
+							function push (array, element) {
+								array[array.length] = element;
+								
+								return array.length;
+							}
+							
+							function reverse (array) {
+								for (let i = 0; i &lt; Math.floor(array.length / 2); i++) {
+									const tmp = array[i];
+									array[i] = array[array.length - 1 - i];
+									array[array.length - 1 - i] = tmp;
+								}
+							
+								return array;
+							}
+							
+							function slice (array, start, end) {
+								const result = [];
+								
+								for (let i = 0; i &lt; end - start; i++) {
+									result[i] = array[i + start];
+								}
+								
+								return result;
+							}
+
+							function every (array, condition) {
+								for (let i = 0; i &lt; array.length; i++) {
+									if (!condition(array[i], i)) {
+										return false;
+									}
+								}
+								
+								return true;
+							}
+							
+							function filter (array, condition) {
+								const result = [];
+								
+								for (let i = 0; i &lt; array.length; i++) {
+									if (condition(array[i], i)) {
+										result[result.length] = array[i];
+									}
+								}
+								
+								return result;
+							}
+							
+							function flat (array) {
+								const result = [];
+								
+								for (let i = 0; i &lt; array.length; i++) {
+									if (array[i] instanceof Array) {
+										for (let j = 0; j &lt; array[i].length; j++) {
+											result[result.length] = array[i][j];
+										}
+									} else {
+										result[result.length] = array[i];
+									}
+								}
+								
+								return result;
+							}
+							
+							function flatMap (array, transform) {
+								const result = [];
+								
+								for (let i = 0; i &lt; array.length; i++) {
+									const transformed = transform(array[i]);
+									if (transformed instanceof Array) {
+										for (let j = 0; j &lt; transformed.length; j++) {
+											result[result.length] = transformed[j];
+										}
+									} else {
+										result[result.length] = transformed;
+									}
+								}
+								
+								return result;
+							}
+							
+							function forEach (array, handler) {
+								for (let i = 0; i &lt; array.length; i++) {
+									handler(array[i]);
+								}
+							}
+							
+							function map (array, transform) {
+								const result = [];
+								
+								for (let i = 0; i &lt; array.length; i++) {
+									result[i] = transform(array[i], i);
+								}
+								
+								return result;
+							}
+							
+							function reduce (array, reducer, initialValue) {
+								let result = initialValue;
+								
+								for (let i = 0; i &lt; array.length; i++) {
+									result = reducer(result, array[i], i);
+								}
+								
+								return result;
+							}
+							
+							function reduceRight (array, reducer, initialValue) {
+								let result = initialValue;
+								
+								for (let i = array.length - 1; i &gt;= 0; i--) {
+									result = reducer(result, array[i], i);
+								}
+								
+								return result;
+							}
+							
+							function some (array, condition) {
+								for (let i = 0; i &lt; array.length; i++) {
+									if (condition(array[i], i)) {
+										return true;
+									}
+								}
+								
+								return false;
+							}
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>Exercise 20: Arrays (2)</h2>
+					<p>Solution implementing the full specification for each function as described in their corresponding MDN article.</p>
+					<pre>
+						<code data-trim class="language-javascript">
+							function normalizeIndex (index, length) {
+								return Number.isNaN(index) ? 0 : index &lt; 0 ? Math.max(0, index + length) : index;
+							}
+							
+							function concat (...values) {
+								const result = [];
+								
+								for (let i = 0; i &lt; values.length; i++) {
+									const value = values[i];
+									
+									if (value instanceof Array) {
+										for (let j = 0; j &lt; value.length; j++) {
+											if (value.hasOwnProperty(j)) {
+												result[result.length] = value[j];
+											} else {
+												result.length++;
+											}
+										}
+									} else {
+										result[result.length] = value;
+									}
+								}
+								
+								return result;
+							}
+							
+							function copyWithin (array, destination, start, end) {
+								if (array instanceof Array) {
+									const copyDestination = normalizeIndex(Number(destination), array.length);
+									const copyStart = normalizeIndex(Number(start || 0), array.length);
+									const copyEnd = normalizeIndex(Number(end || end === 0 ? end : array.length), array.length);
+									
+									if (
+										!Number.isNaN(copyDestination)
+										&& !Number.isNaN(copyStart)
+										&& !Number.isNaN(copyEnd)
+										&& copyStart &lt; copyEnd
+										&& copyStart != copyDestination
+										&& copyStart &lt; array.length
+									) {
+										const offsetStart =
+											copyStart &lt; copyDestination
+												? Math.min(array.length - copyDestination, copyEnd - copyStart) - 1
+												: 0;
+										const offsetEnd =
+											copyStart &lt; copyDestination
+												? -1
+												: Math.min(copyEnd - copyStart, array.length - copyStart);
+										const offsetStep =
+											copyStart &lt; copyDestination
+												? -1
+												: 1;
+										
+										for (let offset = offsetStart; offset != offsetEnd; offset += offsetStep) {
+											const fromIndex = copyStart + offset;
+											const toIndex = copyDestination + offset;
+											
+											if (array.hasOwnProperty(fromIndex)) {
+												array[toIndex] = array[fromIndex];
+											} else {
+												delete array[toIndex];
+											}
+										}
+									}
+								}
+								
+								return array;
+							}
+							
+							function indexOf (array, element, fromIndex) {
+								if (array instanceof Array) {
+									const startIndex = normalizeIndex(Number(fromIndex || 0), array.length);
+									
+									if (startIndex &gt;= 0) {
+										for (let i = startIndex; i &lt; array.length; i++) {
+											if (
+												array.hasOwnProperty(i)
+												&& array[i] === element
+											) {
+												return i;
+											}
+										}
+									}
+								}
+								
+								return -1;
+							}
+							
+							function lastIndexOf (array, element, fromIndex) {
+								if (array instanceof Array) {
+									const startIndex = Math.min(
+										normalizeIndex(
+											Number(
+												fromIndex || fromIndex === 0
+													? fromIndex
+													: array.length - 1
+											),
+											array.length
+										),
+										array.length - 1
+									);
+
+									for (let i = startIndex; i &gt;= 0; i--) {
+										if (
+											array.hasOwnProperty(i)
+											&& array[i] === element
+										) {
+											return i;
+										}
+									}
+								}
+								
+								return -1;
+							}
+							
+							function pop (array) {
+								if (array instanceof Array) {
+									const element = array[array.length - 1];
+									
+									array.length = Math.max(array.length - 1, 0);
+									
+									return element;
+								} else {
+									return undefined;
+								}
+							}
+							
+							function push (array, ...elements) {
+								if (array instanceof Array) {
+									for (const element of elements) {
+										array[array.length] = element;
+									}
+									
+									return array.length;
+								} else {
+									return 0;
+								}
+							}
+							
+							function swap (array, i, j) {
+								if (
+									array.hasOwnProperty(i)
+									&& array.hasOwnProperty(j)
+								) {
+									const tmp = array[i];
+									array[i] = array[j];
+									array[j] = tmp;
+								} else if (array.hasOwnProperty(i)) {
+									array[j] = array[i];
+									delete array[i];
+								} else if (array.hasOwnProperty(j)) {
+									array[i] = array[j];
+									delete array[j];
+								}
+							}
+							
+							function reverse (array) {
+								if (array instanceof Array) {
+									for (let i = 0; i &lt; Math.floor(array.length / 2); i++) {
+										const swapPosition = array.length - 1 - i;
+										
+										swap(array, i, swapPosition);
+									}
+								}
+							
+								return array;
+							}
+							
+							function slice (array, start, end) {
+								const result = [];
+									
+								if (array instanceof Array) {
+									const sliceStart = normalizeIndex(Number(start || 0), array.length);
+									const sliceEnd = Math.min(
+										normalizeIndex(
+											Number(end || end === 0
+												? end
+												: array.length
+											),
+											array.length
+										),
+										array.length
+									);
+									
+									if (
+										!Number.isNaN(sliceStart)
+										&& !Number.isNaN(sliceEnd)
+										&& sliceStart &lt; array.length
+									) {
+										for (let i = 0; i &lt; sliceEnd - sliceStart; i++) {
+											if (array.hasOwnProperty(i + sliceStart)) {
+												result[i] = array[i + sliceStart];
+											} else {
+												result.length++;
+											}
+										}
+									}
+								}
+
+								return result;
+							}
+
+							function every (array, condition, thisArg) {
+								if (typeof condition !== 'function') {
+									throw new TypeError(condition + ' is not a function');
+								}
+								
+								if (array instanceof Array) {
+									const that = thisArg !== undefined ? thisArg : array;
+									const length = array.length;
+									
+									for (let i = 0; i &lt; length; i++) {
+										if (
+											array.hasOwnProperty(i)
+											&& !condition.call(that, array[i], i, array)
+										) {
+											return false;
+										}
+									}
+								}
+								
+								return true;
+							}
+							
+							function filter (array, condition, thisArg) {
+								if (typeof condition !== 'function') {
+									throw new TypeError(condition + ' is not a function');
+								}
+								
+								const result = [];
+								
+								if (array instanceof Array) {
+									const that = thisArg !== undefined ? thisArg : array;
+									const length = array.length;
+									
+									for (let i = 0; i &lt; length; i++) {
+										const element = array[i];
+										
+										if (
+											array.hasOwnProperty(i)
+											&& condition.call(that, element, i, array)
+										) {
+											result[result.length] = element;
+										}
+									}
+								}
+								
+								return result;
+							}
+							
+							function appendFlat (out, value, depth) {
+								if (
+									depth &gt; 0
+									&& value instanceof Array
+								) {
+									for (let i = 0; i &lt; value.length; i++) {
+										if (value.hasOwnProperty(i)) {
+											appendFlat(out, value[i], depth - 1);
+										}
+									}
+								} else {
+									out[out.length] = value;
+								}
+							}
+							
+							function flat (array, depth = 1) {
+								const depthNumber = typeof depth === 'number' && !Number.isNaN(depth) ? depth : 0;
+								const result = [];
+								
+								if (array && typeof array.length !== 'undefined') {
+									for (let i = 0; i &lt; array.length; i++) {
+										if (array.hasOwnProperty(i)) {
+											appendFlat(result, array[i], depth);
+										}
+									}
+								}
+								
+								return result;
+							}
+							
+							function flatMap (array, transform, thisArg) {
+								if (typeof transform !== 'function') {
+									throw new TypeError('flatMap mapper function is not callable');
+								}
+								
+								const result = [];
+								
+								if (array && typeof array.length !== 'undefined') {
+									for (let i = 0; i &lt; array.length; i++) {
+										if (array.hasOwnProperty(i)) {
+											const that = thisArg !== undefined ? thisArg : array;
+											const transformed = transform.call(that, array[i], i, array);
+											
+											appendFlat(result, transformed, 1);
+										}
+									}
+								}
+								
+								return result;
+							}
+							
+							function forEach (array, handler, thisArg) {
+								if (typeof handler !== 'function') {
+									throw new TypeError(handler + ' is not a function');
+								}
+								
+								if (array && typeof array.length !== 'undefined') {
+									const that = thisArg !== undefined ? thisArg : array;
+									const length = array.length;
+									
+									for (let i = 0; i &lt; length; i++) {
+										if (array.hasOwnProperty(i)) {
+											handler.call(that, array[i], i, array)
+										}
+									}
+								}
+							}
+							
+							function map (array, transform, thisArg) {
+								if (typeof transform !== 'function') {
+									throw new TypeError(transform + ' is not a function');
+								}
+								
+								let result = [];
+								
+								if (array && typeof array.length !== 'undefined') {
+									const that = thisArg !== undefined ? thisArg : array;
+									const length = array.length;
+									result = new Array(length);
+									
+									for (let i = 0; i &lt; length; i++) {
+										if (array.hasOwnProperty(i)) {
+											result[i] = transform.call(that, array[i], i, array)
+										}
+									}
+								}
+								
+								return result;
+							}
+							
+							function reduce (array, reducer, initialValue) {
+								if (typeof reducer !== 'function') {
+									throw new TypeError(reducer + ' is not a function');
+								}
+								
+								if (array && typeof array.length !== 'undefined') {
+									const length = array.length;
+									
+									if (length === 0 && arguments.length &lt; 3) {
+										throw new TypeError('reduce of empty array with no initial value');
+									}
+									
+									let result = arguments.length &lt; 3 ? array[0] : initialValue;
+									const startIndex = arguments.length &lt; 3 ? 1 : 0;
+									
+									for (let i = startIndex; i &lt; length; i++) {
+										if (array.hasOwnProperty(i)) {
+											result = reducer(result, array[i], i, array);
+										}
+									}
+									
+									return result;
+								}
+							}
+							
+							function reduceRight (array, reducer, initialValue) {
+								if (typeof reducer !== 'function') {
+									throw new TypeError(reducer + ' is not a function');
+								}
+								
+								if (array && typeof array.length !== 'undefined') {
+									const length = array.length;
+									
+									if (length === 0 && arguments.length &lt; 3) {
+										throw new TypeError('reduce of empty array with no initial value');
+									}
+									
+									let result = arguments.length &lt; 3 ? array[length - 1] : initialValue;
+									const startIndex = arguments.length &lt; 3 ? length - 2 : length - 1;
+									
+									for (let i = startIndex; i &gt;= 0; i--) {
+										if (array.hasOwnProperty(i)) {
+											result = reducer(result, array[i], i, array);
+										}
+									}
+									
+									return result;
+								}
+							}
+							
+							function some (array, condition, thisArg) {
+								if (typeof condition !== 'function') {
+									throw new TypeError(condition + ' is not a function');
+								}
+								
+								if (array instanceof Array) {
+									const that = thisArg !== undefined ? thisArg : array;
+									const length = array.length;
+									
+									for (let i = 0; i &lt; length; i++) {
+										if (
+											array.hasOwnProperty(i)
+											&& condition.call(that, array[i], i, array)
+										) {
+											return true;
+										}
+									}
+								}
+								
+								return false;
+							}
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>Exercise 20x: Arrays (1)</h2>
+					<p>Solution implementing the basic use case for a sort function.</p>
+					<pre>
+						<code data-trim class="language-javascript">
+							function sort (array, comparator) {
+								for (let i = 0; i &lt; array.length - 1; i++) {
+									for (let j = 0; j &lt; array.length - 1 - i; j++) {
+										if (comparator(array[j], array[j + 1]) &gt; 0) {
+											const tmp = array[j];
+											array[j] = array[j + 1];
+											array[j + 1] = tmp;
+										}
+									}
+								}
+								
+								return array;
+							}
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>Exercise 20x: Arrays (2)</h2>
+					<p>Solution implementing the full specification for a sort function as described in the corresponding MDN article.</p>
+					<pre>
+						<code data-trim class="language-javascript">
+							function defaultComparator (a, b) {
+								const aStr = '' + a;
+								const bStr = '' + b;
+								
+								if (aStr &lt; bStr) {
+									return -1;
+								} else if (aStr &gt; bStr) {
+									return 1;
+								} else {
+									return 0;
+								}
+							}
+
+							function swap (array, i, j) {
+								if (
+									array.hasOwnProperty(i)
+									&& array.hasOwnProperty(j)
+								) {
+									const tmp = array[i];
+									array[i] = array[j];
+									array[j] = tmp;
+								} else if (array.hasOwnProperty(i)) {
+									array[j] = array[i];
+									delete array[i];
+								} else if (array.hasOwnProperty(j)) {
+									array[i] = array[j];
+									delete array[j];
+								}
+							}
+							
+							function sort (array, comparator) {
+								if (typeof comparator !== 'function' && typeof comparator !== 'undefined') {
+									throw new TypeError('The comparison function must be either a function or undefined');
+								}
+								
+								const compareFunction = comparator || defaultComparator;
+								
+								if (array && typeof array.length !== 'undefined') {
+									for (let i = 0; i &lt; array.length - 1; i++) {
+										for (let j = 0; j &lt; array.length - 1; j++) {
+											if (array.hasOwnProperty(j)) {
+												if (array.hasOwnProperty(j + 1)) {
+													if (typeof array[j] !== 'undefined') {
+														if (
+															typeof array[j + 1] !== 'undefined') {
+															&& compareFunction(array[j], array[j + 1]) &gt; 0
+														) {
+															swap(array, j, j + 1);
+														}
+													} else if (typeof array[j + 1] !== 'undefined') {
+														swap(array, j, j + 1);
+													}
+												} 
+											} else if (array.hasOwnProperty(j + 1)) {
+												swap(array, j, j + 1);
+											}
+										}
+									}
+								}
+								
+								return array;
+							}
+						</code>
+					</pre>
+				</section>
 			</div>
 		</div>
 

@@ -52,9 +52,10 @@ html, body {
 	display: flex;
 	background: indigo;
 	color: white;
+	justify-content: space-between;
 }
 
-.app-title {
+.app-header > div {
 	font-weight: 500;
 	font-size: calc(var(--base-font-size) * 4 / 3);
 	line-height: var(--app-title-line-height);
@@ -71,7 +72,7 @@ html, body {
 
 #cards {
 	flex: 1 1 auto;
-	display: grid;
+	display: none;
 	grid-template-columns: repeat(var(--card-columns), var(--card-size));
 	grid-template-rows: repeat(var(--card-rows), var(--card-size));
 }
@@ -97,8 +98,8 @@ html, body {
 .card {
 	color: lightblue;
 	background: repeating-linear-gradient(135deg,
-		transparent,
-		transparent 10%,
+		white,
+		white 10%,
 		currentColor 10%,
 		currentColor 20%);
 }
@@ -108,5 +109,64 @@ html, body {
 	justify-content: center;
 	align-items: center;
 	font-size: calc(var(--card-size) / 2);
+	transform: rotateY(90deg);
 	background: white;
+}
+
+#start-game-view {
+	flex: 1 1 auto;
+	display: flex;
+	flex-direction: column;
+	row-gap: 16px;
+	align-items: center;
+	justify-content: center;
+}
+
+button {
+	display: flex;
+	flex: 0 1 auto;
+	font-size: calc(var(--base-font-size) * 4 / 3);
+	font-weight: 500;
+	line-height: calc(var(--base-font-size) * 4 / 3 * 1.25);
+	background: indigo;
+	color: white;
+	padding: 8px 44px;
+	border-radius: 28px;
+	transition: background 0.2s;
+	border-top: 2px solid #be66ff;
+	border-left: 2px solid #be66ff;
+	border-bottom: 2px solid #1d0033;
+	border-right: 2px solid #1d0033;
+}
+
+button:hover {
+	background: #7600cc;
+	transition: background 0.2s;
+}
+
+button:active {
+	border-bottom: 2px solid #be66ff;
+	border-right: 2px solid #be66ff;
+	border-top: 2px solid #1d0033;
+	border-left: 2px solid #1d0033;
+}
+
+.card.flip {
+	transform: rotateY(90deg);
+	transition: transform 0.2s;
+}
+
+.symbol.flip {
+	transform: rotateY(0deg);
+	transition: transform 0.2s 0.2s;
+}
+
+.card.flip-back {
+	transform: rotateY(0deg);
+	transition: transform 0.2s 0.2s;
+}
+
+.symbol.flip-back {
+	transform: rotateY(90deg);
+	transition: transform 0.2s;
 }

@@ -2,8 +2,8 @@
 <head>
 	<link href="css/fontawesome.css" rel="stylesheet">
 	<link href="css/solid.css" rel="stylesheet">
-	<link href="css/app-basic.css" rel="stylesheet">
-	<script src="js/app-basic.js"></script>
+	<link href="css/app-intermediate.css" rel="stylesheet">
+	<script src="js/app-intermediate.js"></script>
 </head>
 <body>
 	<div class="app">
@@ -11,6 +11,8 @@
 			<div class="app-title">
 				Memory
 			</div>
+			<div id="score">Score: 0</div>
+			<div id="timer">00:00</div>
 		</div>
 		<div id="content">
 		</div>
@@ -23,6 +25,9 @@
 		Templates are components that will be reused multiple times for building more complex views, for example cards.
 	-->
 	<div id="views">
+		<div id="start-game-view">
+			<button class="start-game">Click to Start Game</button>
+		</div>
 		<div id="cards"></div>
 	</div>
 	<div id="templates">

@@ -1,0 +1,229 @@
+* {
+	box-sizing: border-box;
+}
+
+/*
+We are using custom variables in conjunction with calc to provide a responsive user experience. The challenge with
+this memory game is, that all cards, regardless of how many cards the user chose, should be visible at all times.
+This method does not need any javascript code to work apart from setting the number of columns and rows for the layout.
+
+By fixing the sizes for header and footer layout elements, we can determine the remaining space for cards and
+calculate their size.
+
+The drawback of this is that we have to make sure that the header and footer do not overflow and we need to update the
+calculation when we add or remove layout elements.
+*/
+:root {
+	--card-columns: 1;
+	--card-rows: 1;
+	--base-font-size: 24px;
+	--content-padding: 16px;
+	--app-header-vertical-padding: 8px;
+	--app-header-horizontal-padding: 16px;
+	--app-title-line-height: calc(var(--base-font-size) * 4 / 3 * 1.25);
+	--app-footer-line-height: calc(var(--base-font-size) / 2 * 1.25);
+	--card-size: min(calc((100vw - var(--content-padding) * 2) / var(--card-columns)), calc((100vh - var(--content-padding) * 2 - var(--app-header-vertical-padding) * 2 - var(--app-title-line-height) - var(--app-footer-line-height)) / var(--card-rows)));
+}
+
+@media(max-width: 600px) {
+	:root {
+		--base-font-size: 16px;
+	}
+}
+
+html, body {
+	height: 100%;
+	margin: 0;
+	font-family: 'Roboto', Arial, sans-serif;
+}
+
+.app {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.app-header {
+	flex: 0 1 auto;
+	padding: var(--app-header-vertical-padding) var(--app-header-horizontal-padding);
+	display: flex;
+	background: indigo;
+	color: white;
+	justify-content: space-between;
+}
+
+.app-header > div {
+	font-weight: 500;
+	font-size: calc(var(--base-font-size) * 4 / 3);
+	line-height: var(--app-title-line-height);
+}
+
+.app-footer {
+	flex: 0 1 auto;
+	font-size: calc(var(--base-font-size) / 2);
+	line-height: var(--app-footer-line-height);
+	text-align: right;
+}
+
+#content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex: 1 1 auto;
+	padding: var(--content-padding);
+	overflow: hidden;
+}
+
+#cards {
+	flex: 1 1 auto;
+	display: none;
+	grid-template-columns: repeat(var(--card-columns), var(--card-size));
+	grid-template-rows: repeat(var(--card-rows), var(--card-size));
+}
+
+.cards-container {
+	position: relative;
+	display: flex;
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.cards-container > div {
+	position: absolute;
+	left: 8px;
+	top: 8px;
+	right: 8px;
+	bottom: 8px;
+	border: 1px solid #000;
+	border-radius: 10%;
+	perspective: 200px;
+}
+
+.card {
+	color: lightblue;
+	background: repeating-linear-gradient(135deg,
+		white,
+		white 10%,
+		currentColor 10%,
+		currentColor 20%);
+}
+
+.symbol {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: calc(var(--card-size) / 2);
+	transform: rotateY(90deg);
+	background: white;
+}
+
+#start-game-view, #enter-highscore-view, #highscores {
+	flex: 1 1 auto;
+	display: flex;
+	flex-direction: column;
+	row-gap: 16px;
+	align-items: center;
+	justify-content: center;
+}
+
+#highscore-name {
+	border-radius: 5px;
+	padding: 5px 10px;
+}
+
+button {
+	display: flex;
+	flex: 0 1 auto;
+	font-size: calc(var(--base-font-size) * 4 / 3);
+	font-weight: 500;
+	line-height: calc(var(--base-font-size) * 4 / 3 * 1.25);
+	background: indigo;
+	color: white;
+	padding: 8px 44px;
+	border-radius: 28px;
+	transition: background 0.2s;
+	border-top: 2px solid #be66ff;
+	border-left: 2px solid #be66ff;
+	border-bottom: 2px solid #1d0033;
+	border-right: 2px solid #1d0033;
+}
+
+button:hover {
+	background: #7600cc;
+	transition: background 0.2s;
+}
+
+button:active {
+	border-bottom: 2px solid #be66ff;
+	border-right: 2px solid #be66ff;
+	border-top: 2px solid #1d0033;
+	border-left: 2px solid #1d0033;
+}
+
+.card.flip {
+	transform: rotateY(90deg);
+	transition: transform 0.2s;
+}
+
+.symbol.flip {
+	transform: rotateY(0deg);
+	transition: transform 0.2s 0.2s;
+}
+
+.card.flip-back {
+	transform: rotateY(0deg);
+	transition: transform 0.2s 0.2s;
+}
+
+.symbol.flip-back {
+	transform: rotateY(90deg);
+	transition: transform 0.2s;
+}
+
+.highscores-list {
+	flex: 1 1 auto;
+	display: grid;
+	grid-template-columns: auto auto auto;
+	column-gap: 16px;
+	align-items: center;
+	justify-content: center;
+}
+
+.highscores-list .place {
+	text-align: right;
+}
+
+.highscores-list .score {
+	font-weight: 500;
+	text-align: right;
+}
+
+#views, #templates {
+	display: none;
+}
+
+#player-selection {
+	display: flex;
+	flex: 0 1 auto;
+	column-gap: 16px;
+}
+
+#one-player-mode, #two-player-mode {
+	display: flex;
+	flex: 0 1 auto;
+	font-size: calc(var(--base-font-size) * 4 / 3);
+	font-weight: 500;
+	line-height: calc(var(--base-font-size) * 4 / 3 * 1.25);
+	padding: 8px 44px;
+	border-radius: 28px;
+	background: white;
+	color: black;
+	transition: background 0.2s, color 0.2s;
+	border: 2px solid #000;
+}
+
+#one-player-mode.selected, #two-player-mode.selected {
+	background: black;
+	color: white;
+	transition: background 0.2s, color 0.2s;
+}
